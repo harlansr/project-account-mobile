@@ -2,12 +2,18 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'pages/splash_page.dart';
 import 'pages/login_page.dart';
 import 'pages/home_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Load file .env sebelum runApp
+  await dotenv.load(fileName: ".env");
+
   runApp(const MyApp());
 }
 
@@ -49,7 +55,7 @@ class _MyAppState extends State<MyApp> {
         final routeName = _deepLink ?? settings.name ?? '/';
         final uri = Uri.parse(routeName);
 
-        // Normal startup
+        // Splash saat startup normal
         if (_deepLink == null && (uri.path == '/' || uri.path.isEmpty)) {
           return MaterialPageRoute(builder: (_) => const SplashPage());
         }
@@ -59,13 +65,13 @@ class _MyAppState extends State<MyApp> {
           return MaterialPageRoute(builder: (_) => const LoginPage());
         }
 
-        // Home page via deep link or navigation
+        // Home page via deep link atau navigasi
         if (uri.path == '/home' || uri.host == 'home') {
           final id = uri.queryParameters['id'];
           return MaterialPageRoute(builder: (_) => HomePage(deepLinkId: id));
         }
 
-        // Fallback
+        // Fallback jika route tidak dikenal
         return MaterialPageRoute(
           builder: (_) => Scaffold(
             body: Center(child: Text('Unknown route: $routeName')),

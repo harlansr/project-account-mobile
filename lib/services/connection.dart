@@ -34,7 +34,7 @@ class ConnectionService{
       if(response.statusCode == 200){
         // print(dataRes);
         // print("Success: ${dataRes['token']}");
-        token = dataRes['access_token'];
+        token = dataRes['data']['access_token'];
         prefs.setString('access_token', token.toString());
         // print('Save Token: $token');
       }else{

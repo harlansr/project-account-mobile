@@ -57,49 +57,21 @@ class _LoginPageState extends State<LoginPage>
 
 
     int resCode = await Backend.doLogin(email, password);
-    print(resCode);
+    setState(() => _isLoading = false);
 
-    // try {
+    if (resCode == 200) {
+      // final data = jsonDecode(response.body);
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(content: Text("Login sukses! Selamat datang ")),
+      // );
 
-      
-
-    //   final url = Uri.parse('http://192.168.0.121:3105/api/v1/auth/login');
-
-    //   final response = await http.post(
-    //     url,
-    //     headers: {
-    //       'Authorization':
-    //           'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTk3NDE1NDIsImp3aSI6ImE2ZDdlMjVlLTg0NjEtNDk2ZC1hZTRkLWE0YmY4NjgwYTY3YSIsInBpZCI6MSwic3ViIjoiMGI4N2I2MWMtYTIwYy0xMWYwLWJhNDktZDg0M2FlNWZkNTFjIn0.Nm2IsIMFC5cHzDdVtGn9ObG7Ap5OTlJK4-K4plJsJBQ',
-    //       'Signature': 'unVxwIkeyELe6iloW0guo694oK4BcaBJHkLv04h1dx6y/YuN2wrxWzoLtyBsXwOfSFX1yno/ajelhXrPkQ9YjA==',
-    //       'Timestamp': '1759684626182',
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: jsonEncode({
-    //       "email": email,
-    //       "password": password,
-    //     }),
-    //   );
-
-    //   if (response.statusCode == 200) {
-    //     final data = jsonDecode(response.body);
-    //     ScaffoldMessenger.of(context).showSnackBar(
-    //       SnackBar(content: Text("Login sukses! Selamat datang ${data['user']?['email'] ?? email}")),
-    //     );
-
-    //     // TODO: pindah ke halaman home setelah login sukses
-    //     // Navigator.pushReplacementNamed(context, '/home');
-    //   } else {
-    //     ScaffoldMessenger.of(context).showSnackBar(
-    //       SnackBar(content: Text("Login gagal (${response.statusCode})")),
-    //     );
-    //   }
-    // } catch (e) {
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     SnackBar(content: Text("Terjadi kesalahan: $e")),
-    //   );
-    // } finally {
-    //   setState(() => _isLoading = false);
-    // }
+      // TODO: pindah ke halaman home setelah login sukses
+      Navigator.pushReplacementNamed(context, '/home');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Login gagal (${resCode})")),
+      );
+    }
   }
 
   @override
