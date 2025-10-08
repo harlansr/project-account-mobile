@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:intl/intl.dart';
@@ -24,31 +25,33 @@ class ConnectionService{
 
   Future<int> doLogin(username, password) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    // 'https://dummyjson.com/auth/login'
     try {
       var url = Uri.http(urlBackend, '/api/mobile/v1/auth/login');
       var headers = {'Content-Type': 'application/json'};
       var body = jsonEncode({'email': username, 'password': password});
-      Response response = await post(url, headers: headers, body: body);
+
+      // Menambahkan timeout 10 detik
+      Response response = await post(url, headers: headers, body: body)
+          .timeout(Duration(seconds: 10), onTimeout: () {
+        print('Request timeout setelah 10 detik');
+        throw TimeoutException('Request login timeout');
+      });
+
       Map dataRes = jsonDecode(response.body);
-      if(response.statusCode == 200){
-        // print(dataRes);
-        // print("Success: ${dataRes['token']}");
+      if (response.statusCode == 200) {
         token = dataRes['data']['access_token'];
         prefs.setString('access_token', token.toString());
-        // print('Save Token: $token');
-      }else{
+      } else {
         print("Code: ${response.statusCode}");
         print("Message: ${dataRes['message']}");
       }
 
       return response.statusCode;
-      
+
     } catch (e) {
       print('Error: $e');
-      return -1;   
+      return -1;
     }
-
   }
 
   Future<bool> doLogout() async {

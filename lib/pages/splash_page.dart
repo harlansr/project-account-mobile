@@ -14,9 +14,10 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
 
     // Simulasi loading 2 detik
-    Timer(const Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 0), () {
       if (mounted) {
-        Navigator.pushReplacementNamed(context, '/login');
+        // Navigator.pushReplacementNamed(context, '/login');
+        Navigator.pushReplacementNamed(context, '/home');
       }
     });
   }
@@ -24,10 +25,14 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: const Color(0xFF4749A0),
       body: Center(
         child: Text(
           'Splash Screen',
-          style: TextStyle(fontSize: 22),
+          style: TextStyle(
+            fontSize: 22,
+            color: Colors.white,
+            ),
         ),
       ),
     );

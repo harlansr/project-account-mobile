@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'pages/splash_page.dart';
-import 'pages/login_page.dart';
-import 'pages/home_page.dart';
+import 'pages/auth/login_page.dart';
+import 'pages/main/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
