@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../services/connection.dart';
-import 'package:http/http.dart';
 
 // Color MainColor = Color(0xFF5753F1);
 const Map<String, Color> ColorList = {
