@@ -82,8 +82,11 @@ class ConnectionService{
       DateTime now = DateTime.now();
 
       // TODO: Time dynamic fill zona waktu (+07:00)
-      String formattedDate = "${DateFormat('yyyy-MM-ddTHH:mm:ss').format(now)}+07:00";
+      // String formattedDate = "${DateFormat('yyyy-MM-ddTHH:mm:ss').format(now)}+07:00";
+      String formattedDate = DateTime.now().millisecondsSinceEpoch.toString();
       String stringToSign ="$methodUp:$path:$accessToken:$encryptedString:$formattedDate";
+
+      print(formattedDate);
       
       ////////////////////////////////////////////////////////////////////////////
       List<int> keyBytes = utf8.encode(clientSecret);
@@ -98,8 +101,8 @@ class ConnectionService{
       Map<String, String> headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $accessToken',
-        'X-TIMESTAMP': formattedDate,
-        'X-SIGNATURE': signatureValue,
+        'Timestamp': formattedDate,
+        'Signature': signatureValue,
       };
       
       switch (methodUp) {

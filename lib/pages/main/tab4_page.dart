@@ -5,6 +5,6 @@ class Tab4Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Tab 3 - Profile'));
+    return const Center(child: Text('Tab 4 - Settings'));
   }
 }
