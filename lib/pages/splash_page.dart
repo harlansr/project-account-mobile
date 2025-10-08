@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -13,11 +14,22 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
 
+    
+
+    
+
     // Simulasi loading 2 detik
-    Timer(const Duration(seconds: 0), () {
+    Timer(const Duration(seconds: 0), () async {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? accessToken = prefs.getString('access_token');
       if (mounted) {
         // Navigator.pushReplacementNamed(context, '/login');
-        Navigator.pushReplacementNamed(context, '/home');
+
+        if(accessToken != null && accessToken != ''){
+          Navigator.pushReplacementNamed(context, '/home');
+        }else{
+          Navigator.pushReplacementNamed(context, '/login');
+        }
       }
     });
   }

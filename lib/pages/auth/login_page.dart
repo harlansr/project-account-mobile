@@ -20,6 +20,8 @@ class _LoginPageState extends State<LoginPage>
   final TextEditingController _passwordController = TextEditingController();
   bool _isLoading = false;
 
+ 
+
   @override
   void initState() {
     super.initState();
@@ -28,6 +30,12 @@ class _LoginPageState extends State<LoginPage>
       duration: const Duration(milliseconds: 400),
     );
     _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
+
+    //////////////////////// HAPUS SAAT PRODUKSI //////////////////////
+    ///// TODO: Hapus nanti
+    _emailController.text = "harlan.setia@gmail.com";
+    _passwordController.text = "harlan123";
+    ///////////////////////////////////////////////////////////////////
   }
 
   void _toggleLoginCard({bool? visible}) {
@@ -40,6 +48,10 @@ class _LoginPageState extends State<LoginPage>
         _controller.reverse();
       }
     });
+  }
+
+  void _clickSignUp(){
+    Navigator.pushReplacementNamed(context, '/home');
   }
 
   Future<void> _login() async {
@@ -281,7 +293,7 @@ class _LoginPageState extends State<LoginPage>
                         children: [
                           const Text("Don’t have an account?"),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {_clickSignUp();},
                             child: const Text(
                               "Sign up",
                               style: TextStyle(color: Colors.grey),
