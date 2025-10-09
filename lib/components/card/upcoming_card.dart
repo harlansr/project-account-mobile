@@ -26,7 +26,7 @@ class UpcomingCard extends StatelessWidget {
         //   borderRadius: BorderRadius.circular(12),
         // ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 5),
           child: Row(
             children: [
               // Icon lingkaran kiri

@@ -159,7 +159,7 @@ class _TabHomePageState extends State<TabHomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Padding(
-                          padding: EdgeInsets.fromLTRB(40, 0, 40, 6),
+                          padding: EdgeInsets.fromLTRB(24, 0, 24, 6),
                           child: Text(
                             'Upcoming Payment',
                             style: TextStyle(
@@ -169,6 +169,7 @@ class _TabHomePageState extends State<TabHomePage> {
                             ),
                           ),
                         ),
+                        SizedBox(height: 4),
                         UpcomingCard(
                           title: "Test",
                           onTap: () => print("TAP CARD 1"),

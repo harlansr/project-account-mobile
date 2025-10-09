@@ -26,7 +26,7 @@ class HistoryCard extends StatelessWidget {
         //   borderRadius: BorderRadius.circular(12),
         // ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
           child: Row(
             children: [
               // Icon lingkaran kiri
