@@ -39,9 +39,9 @@ class _TabHomePageState extends State<TabHomePage> {
     _setStatusBarColor();
 
     final List<Map<String, dynamic>> menus = [
-      {'title': 'Menu', 'onTap': () => debugPrint('Klik NamaMenu 1')},
-      {'title': 'Menu', 'onTap': () => debugPrint('Klik NamaMenu 2')},
-      {'title': 'Menu', 'onTap': () => debugPrint('Klik NamaMenu 3')},
+      {'title': 'Beli', 'onTap': () => debugPrint('Klik NamaMenu 1')},
+      {'title': 'Makan', 'onTap': () => debugPrint('Klik NamaMenu 2')},
+      {'title': 'Jajan', 'onTap': () => debugPrint('Klik NamaMenu 3')},
       {'title': 'Lainnya', 'onTap': () => debugPrint('Klik Lainnya')},
     ];
 
