@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'tab_home_page.dart';
-import 'tab2_page.dart';
-import 'tab3_page.dart';
+import 'tab_home.dart';
+import 'tab_history.dart';
+import 'tab_report.dart';
 import 'tab4_page.dart';
 import 'package:flutter/services.dart';
 
@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int index = 0;
-  final pages = const [TabHomePage(), Tab2Page(), Tab3Page(), Tab4Page()];
+  final pages = const [TabHome(), TabReport(), TabHistory(), Tab4Page()];
 
   @override
   void initState() {
@@ -55,9 +55,9 @@ class _HomePageState extends State<HomePage> {
           _setStatusBarForTab(i); // ubah warna status bar sesuai tab
         },
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'History'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Report'),
+          BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.bar_chart_rounded), label: 'Report'),
+          BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
         ],
       ),

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class HistoryCard extends StatelessWidget {
   final String title;
-  final String desc;
+  final String amount;
   final String time;
   final VoidCallback? onTap;
 
   const HistoryCard({
     super.key,
     required this.title,
-    required this.desc,
+    required this.amount,
     this.time = "",
     this.onTap,
   });
@@ -54,7 +54,7 @@ class HistoryCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      desc,
+                      amount,
                       style: const TextStyle(
                         fontSize: 13,
                         color: Colors.black54,

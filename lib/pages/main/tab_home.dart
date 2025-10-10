@@ -6,14 +6,14 @@ import 'dart:convert';
 import '../../components/card/upcoming_card.dart';
 import '../../components/card/menu_item_card.dart';
 
-class TabHomePage extends StatefulWidget {
-  const TabHomePage({super.key});
+class TabHome extends StatefulWidget {
+  const TabHome({super.key});
 
   @override
-  State<TabHomePage> createState() => _TabHomePageState();
+  State<TabHome> createState() => _TabHomePageState();
 }
 
-class _TabHomePageState extends State<TabHomePage> {
+class _TabHomePageState extends State<TabHome> {
   Future<void> _onRefresh() async {
     await Future.delayed(const Duration(seconds: 1));
   }
@@ -39,10 +39,33 @@ class _TabHomePageState extends State<TabHomePage> {
     _setStatusBarColor();
 
     final List<Map<String, dynamic>> menus = [
-      {'title': 'Beli', 'onTap': () => debugPrint('Klik NamaMenu 1')},
-      {'title': 'Makan', 'onTap': () => debugPrint('Klik NamaMenu 2')},
-      {'title': 'Jajan', 'onTap': () => debugPrint('Klik NamaMenu 3')},
-      {'title': 'Lainnya', 'onTap': () => debugPrint('Klik Lainnya')},
+      {
+        'title': 'Transfer', 
+        'color': const Color(0xFFEBF8FE), 
+        'color_icon': const Color(0xFF26A3F5),
+        'onTap': () => debugPrint('Klik NamaMenu 1'),
+        'icon': Icons.repeat,
+      },
+      {
+        'title': 'Pemasukan', 
+        'color': const Color(0xFFEAF6F2), 
+        'color_icon': const Color(0xFF28BB74), 
+        'icon': Icons.payments_outlined,
+        'onTap': () => debugPrint('Klik NamaMenu 2'),
+      },
+      {
+        'title': 'Bayar', 
+        'color': const Color.fromARGB(255, 255, 235, 235), 
+        'color_icon': const Color.fromARGB(255, 241, 92, 92), 
+        'icon': Icons.payment,
+        'onTap': () => debugPrint('Klik NamaMenu 3'),
+      },
+      {
+        'title': 'Lainnya', 
+        'color': const Color(0xFFF1EEFF), 
+        'color_icon': const Color(0xFF856DFF), 
+        'icon': Icons.dashboard_outlined,
+        'onTap': () => debugPrint('Klik NamaMenu 4'),},
     ];
 
     return Scaffold(
@@ -141,6 +164,9 @@ class _TabHomePageState extends State<TabHomePage> {
                             .map((menu) => MenuItemCard(
                                   title: menu['title']!,
                                   onTap: menu['onTap'],
+                                  color: menu['color'],
+                                  colorIcon: menu['color_icon'],
+                                  icon: menu['icon'],
                                 ))
                             .toList(),
                       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Tab3Page extends StatelessWidget {
-  const Tab3Page({super.key});
+class TabReport extends StatelessWidget {
+  const TabReport({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class Tab3Page extends StatelessWidget {
           Container(
             width: double.infinity,
             color: const Color(0xFF4749A0),
-            padding: const EdgeInsets.fromLTRB(32, 32, 32, 32),
+            padding: const EdgeInsets.fromLTRB(32, 47, 32, 32),
             // alignment: Alignment.topLeft,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +26,7 @@ class Tab3Page extends StatelessWidget {
                     decorationColor: Colors.white,
                   ),
                 ),
-                const SizedBox(height: 40),
+                // const SizedBox(height: 40),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(46, 0, 46, 0),
                   child: SizedBox(
